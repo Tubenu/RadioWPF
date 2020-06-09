@@ -1,0 +1,70 @@
+﻿<Window x:Class="radioWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:radioWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="800">
+
+    <Border Padding="20">
+        <StackPanel>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <RadioButton x:Name="play_button" Margin ="0 0 10 0" Grid.Column ="0" Content="Play" Click="Button_Click" IsChecked="false"/>
+                <RadioButton x:Name="stop_button" Grid.Column ="1" Content="Stop" Click="Button_Click_1"/>
+                <ComboBox x:Name ="station_list"  Margin ="0 0 0 0" Grid.Column="2" HorizontalContentAlignment="Center" DropDownOpened="drop_down_opened" DropDownClosed="dropdownclosed">
+
+                <ComboBoxItem x:Name="lista_stacji" IsSelected="True" >Wybierz Stację radiową</ComboBoxItem>
+
+                </ComboBox>
+
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <TextBlock TextWrapping="WrapWithOverflow" x:Name="label" Margin ="0 10" Height="100" Text="{Binding SelectionBoxItem,StringFormat= 'Obecna stacja:&#x0d;&#x0a;{0}',ElementName=station_list}" ></TextBlock>
+                <!--<ProgressBar Height="10" Width="200" HorizontalContentAlignment="Left"   Minimum="0" Maximum="100" Margin="0 100" ></ProgressBar>-->
+                <MediaElement x:Name="radio" Grid.Column="1" Margin="0 10 0 10" LoadedBehavior="Manual" >
+                    
+                </MediaElement>
+                <TextBox x:Name="volume_percentage" Grid.Column="2" Width="30" Height="20" BorderThickness="0" TextAlignment="Center" Margin="0 60 0 0"></TextBox>
+                <Slider x:Name="volume" Grid.Column="2" Margin="0 50 0 50" ValueChanged="Volume_ValueChanged" Minimum="0" Maximum="1"  TickFrequency="0.01"  Value="0.5"  IsSnapToTickEnabled="True"></Slider>
+                <Button x:Name="next_station" Content="Następna stacja" Grid.Row ="1" Margin="0 10 0 10" Click="next_station_Click" ></Button>
+                <Button x:Name="previous_station" Content="Poprzednia stacja" Grid.Row ="2" Margin="0 10 0 10" Click="previous_station_Click" ></Button>
+                <Button x:Name="random_station" Content="Losowa stacja" Grid.Row ="3" Margin="0 10 0 10" Click="random_station_Click" ></Button>
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</Window>
+    
+ 
+       
+
